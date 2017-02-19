@@ -31,7 +31,7 @@
   </PropertyGroup>
   <ItemGroup>
     <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
+      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
       <Private>True</Private>
     </Reference>
     <Reference Include="System" />
@@ -69,6 +69,7 @@
     <Compile Include="Requests\Data\GetRadioStationAnnotationResponse.cs" />
     <Compile Include="Requests\Data\GetStationFeedRequest.cs" />
     <Compile Include="Requests\Data\GetTrackRequest.cs" />
+    <Compile Include="Requests\Data\ListDevicesRequest.cs" />
     <Compile Include="Requests\Data\ListListenNowSituationResponse.cs" />
     <Compile Include="Requests\Data\ListListenNowSituationsRequest.cs" />
     <Compile Include="Requests\Data\ListListenNowTracksResponse.cs" />
@@ -92,11 +93,13 @@
     <Compile Include="Requests\GetTopChartGenres.cs" />
     <Compile Include="Requests\GetTopCharts.cs" />
     <Compile Include="Requests\GetTrack.cs" />
+    <Compile Include="Requests\ListDevices.cs" />
     <Compile Include="Requests\ListListenNowSituations.cs" />
     <Compile Include="Requests\ListListenNowTracks.cs" />
     <Compile Include="Requests\ListPromotedTracks.cs" />
     <Compile Include="Requests\ListStationCategories.cs" />
     <Compile Include="Requests\ListTrackFeed.cs" />
+    <Compile Include="Requests\ListTrackFeed2.cs" />
     <Compile Include="Requests\MutatePlaylists.cs" />
     <Compile Include="Requests\MutatePlentries.cs" />
     <Compile Include="Requests\PlaylistFeed.cs" />
@@ -104,6 +107,7 @@
     <Compile Include="Requests\PlentryFeed.cs" />
     <Compile Include="Requests\RecordRealTime.cs" />
     <Compile Include="Requests\Signup.cs" />
+    <Compile Include="Requests\Track2.cs" />
     <Compile Include="Sessions\MobileSession.cs" />
     <Compile Include="Sessions\Session.cs" />
     <Compile Include="StructuredRequest.cs" />
@@ -114,6 +118,7 @@
     <Compile Include="Structure\Attribution.cs" />
     <Compile Include="Structure\Chart.cs" />
     <Compile Include="Structure\Config.cs" />
+    <Compile Include="Structure\Device.cs" />
     <Compile Include="Structure\Entity.cs" />
     <Compile Include="Structure\EntityGroup.cs" />
     <Compile Include="Structure\Enums\ExplicitType.cs" />

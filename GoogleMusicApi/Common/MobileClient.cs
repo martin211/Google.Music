@@ -76,9 +76,7 @@ namespace GoogleMusicApi.Common
             try
             {
                 Debug.WriteLine($"Attempting Login ({email})...");
-
-                Session = new MobileSession(new UserDetails(email, password, GoogleAuth.GetDeviceId()));
-                var status = await Session.LoginAsync();
+                var status = await LoginToGoogleAsync(email, password, GoogleAuth.GetDeviceId());
                 if (!status)
                 {
                     Debug.WriteLine("Login Failed.");
@@ -92,6 +90,32 @@ namespace GoogleMusicApi.Common
             {
                 return false;
             }
+        }
+
+        public override async Task<bool> LoginAsync(string email, string password, string deviceId)
+        {
+            try
+            {
+                var status = await LoginToGoogleAsync(email, password, deviceId);
+                if (!status)
+                {
+                    Debug.WriteLine("Login Failed.");
+                    return false;
+                }
+                Debug.WriteLine("Login Success!");
+                return true;
+            }
+            catch (HttpRequestException)
+            {
+                return false;
+            }
+        }
+
+        private Task<bool> LoginToGoogleAsync(string email, string password, string deviceId)
+        {
+            Debug.WriteLine($"Attempting Login ({email})...");
+            Session = new MobileSession(new UserDetails(email, password, deviceId));
+            return Session.LoginAsync();
         }
 
         /// <summary>
@@ -602,5 +626,65 @@ namespace GoogleMusicApi.Common
         }
 
         #endregion Other
+
+        public async Task<List<Plentry>> ListPlaylistEntriesAsync(int numberOfResults = 20000)
+        {
+            if (!CheckSession())
+            {
+                return null;
+            }
+
+            var request = MakeRequest<PlentryFeed>();
+            var data = await request.GetAsync(new FeedRequest(Session)
+            {
+                UpdatedMin = "-1",
+                NewResultsExpected = false
+            });
+
+            if (_plentry == null)
+            {
+                _plentry = data;
+            }
+            else
+            {
+                foreach (var plentryItem in data.Data.Items)
+                {
+                    _plentry.Data.Items.Add(plentryItem);
+                }
+
+                _plentry.NextPageToken = data.NextPageToken;
+            }
+
+            _lastUpdatedPlentry = Time.GetCurrentTimestamp();
+            return _plentry.Data.Items;
+        }
+
+        public async Task<ResultList<Track2>> ListAllTracks(int numberOfResults = 20000)
+        {
+            if (!CheckSession())
+            {
+                return null;
+            }
+
+            var request = MakeRequest<ListTrackFeed2>();
+            var data = await request.GetAsync(new ResultListRequest(Session)
+            {
+                MaxResults = numberOfResults
+            });
+
+            return data;
+        }
+
+        public async Task<ResultList<Device>> ListDevicesAsync()
+        {
+            if (!CheckSession())
+            {
+                return null;
+            }
+
+            var request = MakeRequest<ListDevices>();
+            var data = await request.GetAsync(new ListDevicesRequest(Session));
+            return data;
+        }
     }
 }

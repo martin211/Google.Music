@@ -24,5 +24,13 @@ namespace GoogleMusicApi.Common
         /// <returns>True if successful, false otherwise</returns>
         public abstract Task<bool> LoginAsync(string email, string password);
 
+        /// <summary>
+        /// Login to Google Play Music with the specified email and password.
+        /// </summary>
+        /// <param name="email">The Email / Username of the google account</param>
+        /// <param name="password">The Password</param>
+        /// <param name="deviceId">The device identifier.</param>
+        /// <returns> True if successful, false otherwise</returns>
+        public abstract Task<bool> LoginAsync(string email, string password, string deviceId);
     }
 }
