@@ -30,9 +30,8 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
-    <Reference Include="Newtonsoft.Json, Version=9.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
-      <HintPath>..\..\packages\Newtonsoft.Json.9.0.1\lib\net45\Newtonsoft.Json.dll</HintPath>
-      <Private>True</Private>
+    <Reference Include="Newtonsoft.Json, Version=10.0.0.0, Culture=neutral, PublicKeyToken=30ad4fe6b2a6aeed, processorArchitecture=MSIL">
+      <HintPath>..\..\packages\Newtonsoft.Json.10.0.3\lib\net45\Newtonsoft.Json.dll</HintPath>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -77,8 +76,8 @@
     <Compile Include="Requests\Data\MutateRequest.cs" />
     <Compile Include="Requests\Data\MutateResponse.cs" />
     <Compile Include="Requests\Data\PlaylistsRequest.cs" />
-    <Compile Include="Requests\Data\RecordRealTimeRequest.cs" />
-    <Compile Include="Requests\Data\RecordRealTimeResponse.cs" />
+    <Compile Include="Requests\Data\RecordRequest.cs" />
+    <Compile Include="Requests\Data\RecordResponse.cs" />
     <Compile Include="Requests\Data\ResultListRequest.cs" />
     <Compile Include="Requests\Data\SearchGetRequest.cs" />
     <Compile Include="Requests\Data\StreamUrlGetRequest.cs" />
@@ -105,7 +104,7 @@
     <Compile Include="Requests\PlaylistFeed.cs" />
     <Compile Include="Requests\Playlists.cs" />
     <Compile Include="Requests\PlentryFeed.cs" />
-    <Compile Include="Requests\RecordRealTime.cs" />
+    <Compile Include="Requests\RecordRequest.cs" />
     <Compile Include="Requests\Signup.cs" />
     <Compile Include="Requests\Track2.cs" />
     <Compile Include="Sessions\MobileSession.cs" />
