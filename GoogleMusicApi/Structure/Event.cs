@@ -25,7 +25,20 @@ namespace GoogleMusicApi.Structure
 
     public class MetaJamEventData
     {
-        [JsonProperty("metajamCompactKey")]
-        public string MetajamComapctKey { get; set; }
+        [JsonProperty("lockerId")]
+        public string LockerId { get; set; }
+    }
+
+    public class Context
+    {
+        [JsonProperty("playlistId")]
+        public PlaylistId Playlist { get; set; }
+    }
+
+    public class PlaylistId
+    {
+        public string LockerPlaylistId { get; set; }
+
+        public string PlaylistShareToken { get; set; }
     }
 }

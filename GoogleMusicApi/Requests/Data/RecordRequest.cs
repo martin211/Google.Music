@@ -5,7 +5,7 @@ using Newtonsoft.Json;
 namespace GoogleMusicApi.Requests.Data
 {
     [JsonObject(MemberSerialization.OptIn)]
-    public class RecordRealTimeRequest : PostRequest
+    public class RecordRequest : PostRequest
     {
         [JsonProperty("clientTimeMillis")]
         public string ClientTimeMillis { get; set; }
@@ -13,7 +13,7 @@ namespace GoogleMusicApi.Requests.Data
         [JsonProperty("events")]
         public Event[] Events { get; set; }
 
-        public RecordRealTimeRequest(Session session) : base(session)
+        public RecordRequest(Session session) : base(session)
         {
         }
     }

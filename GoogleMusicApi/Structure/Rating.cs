@@ -9,6 +9,7 @@ namespace GoogleMusicApi.Structure
         [JsonConverter(typeof(StringEnumConverter))]
         public Enums.Rating RatingValue { get; set; }
 
-        
+        [JsonProperty("context")]
+        public Context Context { get; set; }
     }
 }

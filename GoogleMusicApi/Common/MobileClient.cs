@@ -12,6 +12,7 @@ using GoogleMusicApi.Structure;
 using GoogleMusicApi.Structure.Enums;
 using GoogleMusicApi.Structure.Mutations;
 using Rating = GoogleMusicApi.Structure.Rating;
+using RecordRequest = GoogleMusicApi.Requests.RecordRequest;
 
 namespace GoogleMusicApi.Common
 {
@@ -593,21 +594,21 @@ namespace GoogleMusicApi.Common
             });
             return data;
         }
-        public async Task<RecordRealTimeResponse> SetTrackRating(Structure.Enums.Rating rating, Track track)
+        public async Task<RecordResponse> SetTrackRating(Structure.Enums.Rating rating, Track track)
         {
             return await SetTrackRating(new Tuple<Track, Structure.Enums.Rating>(track, rating));
         }
-        public async Task<RecordRealTimeResponse> SetTrackRating(Structure.Enums.Rating rating, params Track[] tracks )
+        public async Task<RecordResponse> SetTrackRating(Structure.Enums.Rating rating, params Track[] tracks )
         {
             return await SetTrackRating(tracks.Select(x => new Tuple<Track, Structure.Enums.Rating>(x, rating)).ToArray());
         }
-        public async Task<RecordRealTimeResponse> SetTrackRating(params Tuple<Track, Structure.Enums.Rating>[] tracks)
+        public async Task<RecordResponse> SetTrackRating(params Tuple<Track, Structure.Enums.Rating>[] tracks)
         {
             if (!CheckSession())
                 return null;
 
-            var request = MakeRequest<RecordRealTime>();
-            var data = await request.GetAsync(new RecordRealTimeRequest(Session)
+            var request = MakeRequest<RecordRequest>();
+            var data = await request.GetAsync(new Requests.Data.RecordRequest(Session)
             {
                 ClientTimeMillis = Time.GetCurrentTimestamp(),
                 Events = tracks.Select(x =>
@@ -618,7 +619,7 @@ namespace GoogleMusicApi.Common
                         EventId = Guid.NewGuid().ToString(),
                         TrackId = new MetaJamEventData
                         {
-                            MetajamComapctKey = x.Item1.StoreId,
+                            LockerId = x.Item1.StoreId,
                         }
                     }).ToArray()
             });
