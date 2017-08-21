@@ -41,8 +41,6 @@ namespace GoogleMusicApi
             var requestUrl = GetRequestUrl(data);
             try
             {
-
-
                 using (data) // so you cant use the same request twice, after we are finished dispose it.
                 {
                     if (data.Method == RequestMethod.GET)
@@ -79,9 +77,9 @@ namespace GoogleMusicApi
             }
             catch (Exception ex)
             {
-
-                throw;
+                System.Diagnostics.Debugger.Break();
             }
+
             return default(TResponse);
         }
 

@@ -101,5 +101,8 @@ namespace GoogleMusicApi.Requests
 
         [JsonProperty("lastRatingChangeTimestamp")]
         public string LastRatingChangeTimestamp { get; set; }
+
+        [JsonProperty("trackType")]
+        public int TrackType { get; set; }
     }
 }
