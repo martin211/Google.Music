@@ -104,5 +104,8 @@ namespace GoogleMusicApi.Requests
 
         [JsonProperty("trackType")]
         public int TrackType { get; set; }
+
+        [JsonProperty("explicitType")]
+        public int ExplicitType { get; set; }
     }
 }
