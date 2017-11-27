@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>Google.Music</id>
+        <id>Google.Music.Api2</id>
         <version>$version$</version>
         <title>Google Play Music Api</title>
         <authors>Lachlan van der Velden</authors>
