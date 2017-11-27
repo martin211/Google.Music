@@ -5,8 +5,8 @@
         <version>$version$</version>
         <title>Google Play Music Api</title>
         <authors>Lachlan van der Velden</authors>
-        <owners>coman3</owners>
-        <projectUrl>https://github.com/coman3/Google.Music</projectUrl>
+        <owners>martin211</owners>
+        <projectUrl>https://github.com/martin211/Google.Music</projectUrl>
         <iconUrl>https://play-music.gstatic.com/fe/00218313bb98a672dd57f3b232449de8/play_music_triangle.svg</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
         <description>An easy to use C# implimentation for the private Google Play Music Api (skyjam).
@@ -15,18 +15,19 @@ Google Music Api allows you to:
 - View / Modify Playlists
 - Get Music Stream Url
 - Create Radio Stations
-- Get Situtation Data</description>
+- Get Situtation Data
+- Get linked devices
+</description>
         <summary>An easy to use c# implimentation for the private Google Play Music Api (skyjam)</summary>
         <copyright>Lachlan van der Velden</copyright>
         <language>en-AU</language>
         <tags>api, google, c#, stream, private, radio</tags>
         <dependencies>
-            <dependency id="Newtonsoft.Json" version="9.0.1" />
+            <dependency id="Newtonsoft.Json" version="10.0.3" />
         </dependencies>
     </metadata>
     <files>
         <file src="GoogleMusicApi\bin\Release\GoogleMusicApi.dll" target="lib\net452\" />
-        <file src="GoogleMusicApi.UWP\bin\Release\GoogleMusicApi.UWP.dll" target="lib\uap10.0\" />
     </files>
 
 </package>
