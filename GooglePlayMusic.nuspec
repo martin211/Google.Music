@@ -1,7 +1,7 @@
 ﻿<?xml version="1.0" encoding="utf-8"?>
 <package xmlns="http://schemas.microsoft.com/packaging/2011/08/nuspec.xsd">
     <metadata>
-        <id>Google.Music.Api</id>
+        <id>Google.Music</id>
         <version>$version$</version>
         <title>Google Play Music Api</title>
         <authors>Lachlan van der Velden</authors>
@@ -9,7 +9,8 @@
         <projectUrl>https://github.com/martin211/Google.Music</projectUrl>
         <iconUrl>https://play-music.gstatic.com/fe/00218313bb98a672dd57f3b232449de8/play_music_triangle.svg</iconUrl>
         <requireLicenseAcceptance>false</requireLicenseAcceptance>
-        <description>An easy to use C# implimentation for the private Google Play Music Api (skyjam).
+        <description> Forked from https://github.com/coman3/Google.Music
+            An easy to use C# implimentation for the private Google Play Music Api (skyjam).
 
 Google Music Api allows you to:
 - View / Modify Playlists
@@ -20,7 +21,7 @@ Google Music Api allows you to:
 </description>
         <summary>An easy to use c# implimentation for the private Google Play Music Api (skyjam)</summary>
         <copyright>Lachlan van der Velden</copyright>
-        <language>en-AU</language>
+        <language>en-US</language>
         <tags>api, google, c#, stream, private, radio</tags>
         <dependencies>
             <dependency id="Newtonsoft.Json" version="10.0.3" />
@@ -29,5 +30,4 @@ Google Music Api allows you to:
     <files>
         <file src="GoogleMusicApi\bin\Release\GoogleMusicApi.dll" target="lib\net452\" />
     </files>
-
 </package>
