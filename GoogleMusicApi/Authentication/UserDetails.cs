@@ -19,5 +19,10 @@
         {
             Password = null;
         }
+
+        public long GetDeviceId()
+        {
+            return long.Parse(AndroidId, System.Globalization.NumberStyles.HexNumber);
+        }
     }
 }

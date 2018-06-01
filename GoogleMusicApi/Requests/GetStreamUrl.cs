@@ -8,7 +8,7 @@ namespace GoogleMusicApi.Requests
 {
     public class GetStreamUrl : StructuredRequest<StreamUrlGetRequest, Uri>
     {
-        public override string RelativeRequestUrl => "https://android.clients.google.com/music/mplay";
+        public override string RelativeRequestUrl => "https://mclients.googleapis.com/music/mplay";
 
         public GetStreamUrl()
         {
@@ -17,10 +17,10 @@ namespace GoogleMusicApi.Requests
 
         protected override string GetRequestUrl(StreamUrlGetRequest request)
         {
-            return "https://android.clients.google.com/music/mplay" + GetParams(request);
+            return $"{RelativeRequestUrl}{GetParams(request)}";
         }
 
-        protected override async Task<Uri> ProcessReponse(HttpResponseMessage message)
+        protected override async Task<Uri> ProcessResponse(HttpResponseMessage message)
         {
             if (message.StatusCode == HttpStatusCode.RedirectMethod || message.StatusCode == HttpStatusCode.Redirect ||
                 message.StatusCode == HttpStatusCode.RedirectKeepVerb || message.StatusCode == HttpStatusCode.OK)

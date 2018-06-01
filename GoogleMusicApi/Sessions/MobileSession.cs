@@ -64,16 +64,17 @@ namespace GoogleMusicApi.Sessions
         public override void ResetHeaders()
         {
             if (HttpClient == null)
+            {
                 return;
+            }
 
             HttpClient.DefaultRequestHeaders.Clear();
 
             HttpClient.DefaultRequestHeaders.Accept.ParseAdd("application/json");
             HttpClient.DefaultRequestHeaders.UserAgent.ParseAdd(GoogleAuth.UserAgent);
-            HttpClient.DefaultRequestHeaders.Add("X-Device-ID", UserDetails.AndroidId);
+            HttpClient.DefaultRequestHeaders.Add("X-Device-ID", UserDetails.GetDeviceId().ToString());
             HttpClient.DefaultRequestHeaders.Add("X-Device-Logging-ID", "ID" + UserDetails.AndroidId);
-            HttpClient.DefaultRequestHeaders.Authorization =
-                AuthenticationHeaderValue.Parse("GoogleLogin auth=" + AuthorizationToken);
+            HttpClient.DefaultRequestHeaders.Authorization = AuthenticationHeaderValue.Parse("GoogleLogin auth=" + AuthorizationToken);
         }
     }
 }

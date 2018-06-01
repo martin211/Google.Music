@@ -27,10 +27,8 @@ namespace GoogleMusicApi.Common
         /// </summary>
         public StreamQuality StreamQuality { get; set; }
 
-
-
         private ResultList<Plentry> _plentry;
-        private string _lastUpdatedPlentry = "-1";
+
         /// <summary>
         /// Create a new <see cref="MobileClient"/>.
         /// </summary>
@@ -72,6 +70,7 @@ namespace GoogleMusicApi.Common
         /// </summary>
         /// <param name="email">The Email / Username of the google account</param>
         /// <param name="password">The Password / App Specific password (https://security.google.com/settings/security/apppasswords)</param>
+        [Obsolete("User LoginAsync with deviceId")]
         public sealed override async Task<bool> LoginAsync(string email, string password)
         {
             try
@@ -362,7 +361,7 @@ namespace GoogleMusicApi.Common
                 });
                 _plentry = data;
             }
-            _lastUpdatedPlentry = Time.GetCurrentTimestamp();
+
             return _plentry.Data.Items.Where(x => x.PlaylistId == playlist.Id).Select(x=> x.Track).ToList();
         }
 
@@ -419,7 +418,10 @@ namespace GoogleMusicApi.Common
         public async Task<Uri> GetStreamUrlAsync(Track track)
         {
             if (!CheckSession())
+            {
                 return null;
+            }
+
             var request = MakeRequest<GetStreamUrl>();
             var data = await request.GetAsync(new StreamUrlGetRequest(Session, track, StreamQuality));
             return data;
@@ -656,7 +658,6 @@ namespace GoogleMusicApi.Common
                 _plentry.NextPageToken = data.NextPageToken;
             }
 
-            _lastUpdatedPlentry = Time.GetCurrentTimestamp();
             return _plentry.Data.Items;
         }
 

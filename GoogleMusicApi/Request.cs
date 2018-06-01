@@ -20,8 +20,6 @@ namespace GoogleMusicApi
                 new WebRequestHeader("hl", Locale),
                 new WebRequestHeader("dv", "3109"),
                 new WebRequestHeader("tier", "aa"));
-            
-            
         }
 
         public Session Session { get; set; }
@@ -44,7 +42,6 @@ namespace GoogleMusicApi
         {
             Session = null;
             UrlData = null;
-
         }
     }
 
@@ -53,7 +50,6 @@ namespace GoogleMusicApi
         public GetRequest(Session session) : base(session, RequestMethod.GET)
         {
         }
-
     }
 
     [JsonObject(MemberSerialization.OptIn)]
